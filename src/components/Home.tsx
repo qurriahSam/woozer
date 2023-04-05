@@ -2,8 +2,9 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import fetchSongs from "../api/api-calls";
 import Song from "./Song";
+import { PlayList } from "../types/types";
 
-const Home = ({ songPlay }: { songPlay: (id: number, preview: string) => void }) => {
+const Home = ({ songPlay }: { songPlay: (song: PlayList) => void }) => {
   const { isError, isLoading, data, error } = useQuery(["posts"], fetchSongs);
 
   if (isLoading) return <h1>Loading....</h1>;
