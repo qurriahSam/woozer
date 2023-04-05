@@ -9,6 +9,11 @@ import { PlayList } from "./types/types";
 
 function App() {
   const [play, setPlay] = useState<PlayList[]>([]);
+  const [search, setSearch] = useState("");
+
+  const songSearch = (search: string) => {
+    setSearch(search);
+  };
 
   const songPlay = (song: PlayList) => {
     setPlay([song]);
@@ -16,8 +21,8 @@ function App() {
 
   return (
     <>
-      <Navbar />
-      <Home songPlay={songPlay} />
+      <Navbar songSearch={songSearch} />
+      <Home songPlay={songPlay} search={search} />
       <Player play={play} />
     </>
   );
