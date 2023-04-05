@@ -7,7 +7,6 @@ const Home = ({ songPlay }: { songPlay: (song: PlayList) => void }) => {
   const [apiSongs, setApiSongs] = useState<DeezerResp[]>([]);
   const [error, setError] = useState<any>({});
   const apiKey = process.env.REACT_APP_API_KEY;
-  //console.log(`${apiKey}`);
 
   useEffect(() => {
     const options = {
@@ -24,7 +23,6 @@ const Home = ({ songPlay }: { songPlay: (song: PlayList) => void }) => {
       .request(options)
       .then(function (response) {
         setApiSongs(response.data.data);
-        console.log(response.data.data);
       })
       .catch(function (error) {
         setError(error);
