@@ -5,7 +5,7 @@ export interface SongInt {
   preview: string;
   img_small: string;
   img_medium: string;
-  songPlay: (id: number, preview: string) => void;
+  songPlay: (song: PlayList) => void;
 }
 
 export interface DeezerResp {
@@ -54,4 +54,12 @@ export interface ApiResp {
   isError: boolean;
   data: DeezerResp[] | undefined;
   error: string | unknown;
+}
+
+export interface PlayList {
+  name: string;
+  writer: string;
+  img: string;
+  src: string;
+  id: number;
 }
