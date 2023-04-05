@@ -4,18 +4,21 @@ import Navbar from "./components/Navbar";
 
 import "./App.css";
 import Home from "./components/Home";
+import Player from "./components/Player";
+import { PlayList } from "./types/types";
 
 function App() {
-  const [play, setPlay] = useState({ id: 0, preview: "" });
+  const [play, setPlay] = useState<PlayList[]>([]);
 
-  const songPlay = (id: number, preview: string) => {
-    setPlay({ id: id, preview: preview });
-    console.log(play);
+  const songPlay = (song: PlayList) => {
+    setPlay([song]);
   };
+
   return (
     <>
       <Navbar />
       <Home songPlay={songPlay} />
+      <Player play={play} />
     </>
   );
 }
