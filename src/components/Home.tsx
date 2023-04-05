@@ -6,6 +6,8 @@ import { PlayList, DeezerResp } from "../types/types";
 const Home = ({ songPlay }: { songPlay: (song: PlayList) => void }) => {
   const [apiSongs, setApiSongs] = useState<DeezerResp[]>([]);
   const [error, setError] = useState<any>({});
+  const apiKey = process.env.REACT_APP_API_KEY;
+  //console.log(`${apiKey}`);
 
   useEffect(() => {
     const options = {
@@ -13,7 +15,7 @@ const Home = ({ songPlay }: { songPlay: (song: PlayList) => void }) => {
       url: "https://deezerdevs-deezer.p.rapidapi.com/search",
       params: { q: "sauti sol" },
       headers: {
-        "X-RapidAPI-Key": "f16440cf3cmsh4be98b0308b4c28p17aa20jsn0ca4171aba9f",
+        "X-RapidAPI-Key": `${apiKey}`,
         "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
       },
     };
@@ -26,13 +28,14 @@ const Home = ({ songPlay }: { songPlay: (song: PlayList) => void }) => {
       })
       .catch(function (error) {
         setError(error);
+        console.error(error);
       });
   }, []);
 
   return (
     <div className='pt-16 pb-16 bg-slate-100'>
       <ul>
-        {apiSongs.length > 1
+        {apiSongs?.length > 1
           ? apiSongs.map((data: any) => (
               <li key={data.id}>
                 <Song
