@@ -10,7 +10,7 @@ function Player({ play }: { play: PlayList[] }) {
     },
   ];
 
-  return <AudioPlayer activeUI={{ all: true }} playList={false ? play : placeholder} />;
+  return <AudioPlayer activeUI={{ all: true }} playList={!!play[0] ? play : placeholder} />;
 }
 
 export default Player;
