@@ -13,7 +13,7 @@ const Home = ({ songPlay }: { songPlay: (song: PlayList) => void }) => {
   if (isError) return <h1>Error loading data!!!</h1>;
 
   return (
-    <div className='pt-16 pb-16'>
+    <div className='pt-16 pb-16 bg-slate-100'>
       <ul>
         {data.map((data) => (
           <li key={data.id}>
