@@ -3,16 +3,20 @@ import axios from "axios";
 import Song from "./Song";
 import { PlayList, DeezerResp } from "../types/types";
 
-const Home = ({ songPlay }: { songPlay: (song: PlayList) => void }) => {
+const Home = ({ songPlay, search }: { songPlay: (song: PlayList) => void; search: string }) => {
   const [apiSongs, setApiSongs] = useState<DeezerResp[]>([]);
   const [error, setError] = useState<any>({});
   const apiKey = process.env.REACT_APP_API_KEY;
 
   useEffect(() => {
+    let param = { q: "sauti sol" };
+    if (search.length > 1) {
+      param = { q: search };
+    }
     const options = {
       method: "GET",
       url: "https://deezerdevs-deezer.p.rapidapi.com/search",
-      params: { q: "sauti sol" },
+      params: param,
       headers: {
         "X-RapidAPI-Key": `${apiKey}`,
         "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
@@ -28,7 +32,11 @@ const Home = ({ songPlay }: { songPlay: (song: PlayList) => void }) => {
         setError(error);
         console.error(error);
       });
-  }, []);
+  }, [search, apiKey]);
+
+  if (search.length > 1) {
+    console.log(search);
+  }
 
   return (
     <div className='pt-16 pb-16 bg-slate-100'>
