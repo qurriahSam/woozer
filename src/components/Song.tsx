@@ -14,9 +14,9 @@ const Song = ({ id, title, artist, preview, img_medium, img_small, songPlay }: S
   };
 
   return (
-    <div onClick={handleClick}>
+    <div className='flex p-5' onClick={handleClick}>
       <img src={img_small} alt='imd' />
-      <p>
+      <p className='pl-2 d-flex self-center'>
         {title} - {artist}
       </p>
     </div>
