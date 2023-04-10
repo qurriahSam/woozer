@@ -11,7 +11,7 @@
 
 ## Description
 
-Wooz!ki is a web application that enables users to preview songs.
+Wooz!k is a web-based platform that enables users to preview songs using the Deezer API from Rapid API. This application has been designed to provide users with a seamless experience. It is a tool for music lovers and industry professionals alike, enabling them to explore and discover new music in a highly efficient and streamlined manner.
 
 ## Screenshot
 
